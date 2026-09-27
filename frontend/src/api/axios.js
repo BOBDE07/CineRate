@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+const configuredBaseURL = import.meta.env.VITE_API_BASE_URL?.trim()
+  || 'https://cinerate-v3ib.onrender.com/api/v1';
+const normalizedBaseURL = configuredBaseURL.replace(/\/+$/, '');
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: normalizedBaseURL.endsWith('/api/v1')
+    ? normalizedBaseURL
+    : `${normalizedBaseURL}/api/v1`,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },

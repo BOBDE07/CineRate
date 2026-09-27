@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 5000 ;
 
 const ALLOWED_ORIGINS = [
     process.env.FRONTEND_URL,           // whatever is set in .env (highest priority)
+    'https://cinerate-rate-rouge.vercel.app',
     'http://localhost:5173',            // Vite default port
     'http://localhost:5174',            // Vite fallback port
 ].filter(Boolean) ; // remove undefined if FRONTEND_URL is not set
